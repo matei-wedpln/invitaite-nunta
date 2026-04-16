@@ -3,175 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitație Nuntă | Stil Penrose</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <title>Invitație Nuntă Minimalistă</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <style>
+        /* Culori Tematice: Măslin și Porumbel */
         :root {
-            --gold: #C5A059;
-            --dark-navy: #0A192F;
-            --off-white: #F8F9FA;
+            --cream: #FFFAF5; /* Alb cald, pur */
+            --olive: #708238; /* Verde măsliniu stins, elegant */
+            --text-dark: #333333; /* Gri închis pentru citibilitate */
+            --text-light: #777777; /* Gri deschis pentru detalii */
         }
 
         body {
             margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--dark-navy);
-            color: var(--off-white);
-            scroll-behavior: smooth;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif; /* Font modern pentru text */
+            background-color: var(--cream);
+            color: var(--text-dark);
+            text-align: center;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .penrose-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            opacity: 0.1;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 0l40 40-40 40-40-40z' fill='%23C5A059' fill-opacity='0.4'/%3E%3C/svg%3E");
+        /* Stil pentru titluri mari (Nume) */
+        h1, h2 {
+            font-family: 'Cormorant Garamond', serif; /* Font clasic, elegant */
+            font-weight: 500;
+            margin: 0;
         }
 
+        h1 {
+            font-size: 3.5rem;
+            color: var(--olive);
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--olive);
+            margin-bottom: 10px;
+        }
+
+        /* Secțiunea Principală (Hero) */
         header {
-            height: 100vh;
+            height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            border-bottom: 2px solid var(--gold);
+            padding: 0 20px;
+            position: relative;
         }
 
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            color: var(--gold);
-            margin: 0;
+        /* Simbolul Porumbelului și Măslinului */
+        .symbol {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--olive);
+            opacity: 0.7;
         }
 
-        .section {
-            max-width: 900px;
-            margin: 80px auto;
-            padding: 20px;
-        }
-
-        .itinerary-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .step {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-left: 3px solid var(--gold);
-            text-align: left;
-        }
-
-        .step h3 {
-            color: var(--gold);
-            margin-top: 0;
-            font-family: 'Cinzel', serif;
+        header p.date {
             font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--text-light);
+            margin-top: 15px;
         }
 
+        /* Butonul de RSVP Minimalist */
+        .btn-rsvp {
+            margin-top: 40px;
+            padding: 12px 30px;
+            background-color: transparent;
+            color: var(--olive);
+            border: 1px solid var(--olive);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-rsvp:hover {
+            background-color: var(--olive);
+            color: white;
+        }
+
+        /* Secțiuni de Conținut (Program) */
+        .content-section {
+            max-width: 650px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .program-item {
+            margin-bottom: 50px;
+        }
+
+        .program-item p.time {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .program-item p.location {
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        /* Formularul de RSVP */
         .rsvp-section {
-            background: var(--off-white);
-            color: var(--dark-navy);
+            background-color: #fff; /* Fundal alb curat pentru formular */
             padding: 80px 20px;
-            border-radius: 5px;
+            border-top: 1px solid #eee;
         }
 
         .form-group {
-            max-width: 500px;
+            max-width: 450px;
             margin: 0 auto;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
         }
 
         input, select, textarea, button {
             width: 100%;
             padding: 15px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            margin-bottom: 20px;
+            border: 1px solid #E0E0E0;
+            background-color: white;
             font-family: 'Montserrat', sans-serif;
-            box-sizing: border-box;
+            font-size: 1rem;
+            box-sizing: border-box; /* Previne depășirea lățimii */
         }
 
-        .btn-gold {
-            background: var(--dark-navy);
-            color: var(--gold);
-            font-weight: bold;
-            border: 2px solid var(--gold);
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: 0.3s;
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--olive);
+            outline: none;
         }
 
-        .btn-gold:hover {
-            background: var(--gold);
+        .btn-submit {
+            background-color: var(--olive);
             color: white;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
+        .btn-submit:hover {
+            background-color: #5a6b2d; /* O nuanță mai închisă la hover */
+        }
+
+        /* Footer Simplu */
         footer {
-            text-align: center;
-            padding: 40px;
+            padding: 50px 20px;
             font-size: 0.8rem;
-            opacity: 0.6;
+            color: var(--text-light);
+            background-color: var(--cream);
+        }
+
+        /* Ajustări pentru Mobile */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            header { height: 70vh; }
         }
     </style>
 </head>
 <body>
 
-    <div class="penrose-bg"></div>
-
     <header>
-        <p style="letter-spacing: 5px;">VĂ INVITĂM SĂ SERBĂM</p>
+        <div class="symbol">🕊️</div>
+        <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; color: var(--text-light); margin-bottom: 10px;">Vă invităm la nunta noastră</p>
         <h1 id="names">ANDREI & MARIA</h1>
-        <p id="date">22 AUGUST 2026</p>
-        <a href="#itinerary" style="color: var(--gold); text-decoration: none; margin-top: 20px; border-bottom: 1px solid var(--gold);">VEZI PROGRAMUL</a>
+        <p class="date" id="mainDate">Sâmbătă, 22 August 2026</p>
+        <a href="#rsvp" class="btn-rsvp">Confirmă Prezența</a>
     </header>
 
-    <div class="section" id="itinerary">
-        <h2 style="text-align: center; font-family: 'Cinzel'; font-size: 2.5rem;">Programul Zilei</h2>
-        <div class="itinerary-container">
-            <div class="step"><h3>1. Primirea Invitaților</h3><p>Ora 15:00 - Cocktail și socializare.</p></div>
-            <div class="step"><h3>2. Ceremonia</h3><p>Ora 16:30 - Momentul oficial în aer liber.</p></div>
-            <div class="step"><h3>3. Ședința Foto</h3><p>Ora 17:30 - Fotografii alături de invitați.</p></div>
-            <div class="step"><h3>4. Cina Festivă</h3><p>Ora 19:00 - Experiență culinară în salon.</p></div>
-            <div class="step"><h3>5. Primul Dans</h3><p>Ora 20:30 - Deschiderea oficială a petrecerii.</p></div>
-            <div class="step"><h3>6. Tortul</h3><p>Ora 23:00 - Momentul dulce al serii.</p></div>
-            <div class="step"><h3>7. Party Time</h3><p>Ora 00:00 - Dansăm până dimineață.</p></div>
+    <div class="content-section" id="program">
+        <h2 style="margin-bottom: 60px;">Programul Zilei</h2>
+
+        <div class="program-item">
+            <p class="time" id="cununieTime">Ora 16:30</p>
+            <h3>Cununie Religioasă</h3>
+            <p class="location" id="cununieLoc">Biserica Sfântul Silvestru, București</p>
+        </div>
+
+        <hr style="width: 50px; border: 0; border-top: 1px solid var(--olive); margin: 40px auto; opacity: 0.5;">
+
+        <div class="program-item">
+            <p class="time" id="petrecereTime">Ora 19:00</p>
+            <h3>Petrecere</h3>
+            <p class="location" id="petrecereLoc">Restaurantul Grădina Eden, Salonul Măslin</p>
         </div>
     </div>
 
-    <div class="section">
-        <div class="rsvp-section" id="rsvp">
-            <div class="form-group">
-                <h2 style="font-family: 'Cinzel'; text-align: center; margin-bottom: 30px;">Confirmare Prezență</h2>
+    <div class="rsvp-section" id="rsvp">
+        <div class="form-group">
+            <h2 style="text-align: center; margin-bottom: 40px;">Confirmare</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 40px;">Vă rugăm să confirmați prezența până la data de 1 Iulie 2026.</p>
+            
+            <form action="https://formspree.io/f/xbdqgdae" method="POST">
                 
-                <form action="https://formspree.io/f/xbdqgdae" method="POST">
-                    
-                    <label>Nume și Prenume:</label>
-                    <input type="text" name="Nume_Complet" placeholder="Ex: Popescu Ion" required>
-                    
-                    <label>Vei veni?</label>
-                    <select name="Prezenta" required>
-                        <option value="Da">Confirm cu drag</option>
-                        <option value="Nu">Din păcate, nu pot</option>
-                    </select>
-                    
-                    <label>Număr persoane:</label>
-                    <input type="number" name="Persoane" placeholder="Număr total de persoane" min="1" value="1">
-                    
-                    <label>Observații (dietă, mesaje):</label>
-                    <textarea name="Mesaj" placeholder="Ex: Meniu vegetarian, alergii sau un mesaj pentru noi..."></textarea>
-                    
-                    <button type="submit" class="btn-gold">Trimite RSVP</button>
-                </form>
-            </div>
+                <label>Nume și Prenume:</label>
+                <input type="text" name="Nume_Complet" placeholder="Ex: Popescu Ion" required>
+                
+                <label>Vei veni?</label>
+                <select name="Prezenta" required>
+                    <option value="" disabled selected>Alege o opțiune</option>
+                    <option value="Da">Confirm cu drag</option>
+                    <option value="Nu">Din păcate, nu pot</option>
+                </select>
+                
+                <label>Număr persoane (inclusiv copii):</label>
+                <input type="number" name="Persoane" placeholder="Număr total de persoane" min="1" value="1">
+                
+                <label>Observații (dietă, mesaje):</label>
+                <textarea name="Mesaj" placeholder="Ex: Meniu vegetarian, alergii sau un mesaj pentru noi..." rows="4"></textarea>
+                
+                <input type="hidden" name="_next" value="https://google.com">
+
+                <button type="submit" class="btn-submit">Trimite RSVP</button>
+            </form>
         </div>
     </div>
 
     <footer>
-        <p>© 2026 | Creat cu drag pentru ziua noastră specială</p>
+        <p>© 2026 | Matei si Bianca | Creat cu drag</p>
     </footer>
+
+    <script>
+        // MODIFICĂ DOAR TEXTUL DINTRE GHILIMELE DE MAI JOS:
+        const dateNunta = {
+            numeCuplu: "Matei & Bianca", // Numele mari din antet
+            dataPrincipala: "Sâmbătă, 03 Octombrie 2026", // Data de sub nume
+
+            // Cununie Religioasă
+            oraCununie: "Ora 16:30",
+            locatieCununie: "Biserica Sfântul Silvestru, București",
+
+            // Petrecere
+            oraPetrecere: "Ora 19:00",
+            locatiePetrecere: "Restaurantul Royal Horse "
+        };
+
+        // NU MODIFICA MAI JOS - Aici datele se aplică automat în pagină
+        document.getElementById('names').innerText = dateNunta.numeCuplu;
+        document.getElementById('mainDate').innerText = dateNunta.dataPrincipala;
+        document.getElementById('cununieTime').innerText = dateNunta.oraCununie;
+        document.getElementById('cununieLoc').innerText = dateNunta.locatieCununie;
+        document.getElementById('petrecereTime').innerText = dateNunta.oraPetrecere;
+        document.getElementById('petrecereLoc').innerText = dateNunta.locatiePetrecere;
+    </script>
 
 </body>
 </html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitație Nuntă</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #8A9A5B;
+            --clay: #DCAE96;
+            --cream: #F5F1ED;
+            --text: #333333;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--cream);
+            color: var(--text);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 120px 20px;
+            background: linear-gradient(rgba(245, 241, 237, 0.7), rgba(245, 241, 237, 0.7)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070') center/cover;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin: 0;
+            color: var(--sage);
+        }
+
+        .subtitle {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        .section {
+            max-width: 700px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--clay);
+            font-size: 2rem;
+        }
+
+        .rsvp-card {
+            background: white;
+            padding: 40px;
+            border-radius: 2px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            background-color: var(--sage);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: var(--clay);
+        }
+
+        footer {
+            padding: 60px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 id="names">Nume & Nume</h1>
+        <p class="subtitle">Se căsătoresc</p>
+    </header>
+
+    <div class="section">
+        <h2>Vă invităm cu drag</h2>
+        <p id="description">Abia așteptăm să sărbătorim începutul acestui capitol alături de voi, într-o zi plină de soare și bucurie.</p>
+        <hr style="width: 50px; border: 1px solid var(--clay); margin: 30px auto;">
+        <p><strong>DATA:</strong> <span id="weddingDate">01 Ianuarie 2026</span></p>
+        <p><strong>ORA:</strong> <span id="weddingTime">16:00</span></p>
+        <p><strong>LOCAȚIA:</strong> <span id="weddingLocation">Nume Locație, Oraș</span></p>
+    </div>
+
+    <div class="section">
+        <div class="rsvp-card">
+            <h2>Confirmare</h2>
+            <p>Vă rugăm să ne confirmați prezența până la data de 1 iulie.</p>
+            <form id="rsvpForm">
+                <input type="text" placeholder="Nume Complet" required>
+                <select required>
+                    <option value="" disabled selected>Vei veni?</option>
+                    <option value="yes">Confirm cu drag</option>
+                    <option value="no">Din păcate, nu pot</option>
+                </select>
+                <textarea placeholder="Preferințe alimentare sau mesaje pentru noi..."></textarea>
+                <button type="submit" class="btn">Trimite Confirmarea</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 — Creat cu drag</p>
+    </footer>
+
+    <script>
+        // MODIFICĂ AICI DATELE TALE:
+        const config = {
+            numeCuplu: "Bianca si Matei",
+            data: "03 ORCTOMBRIE 2026",
+            ora: "17:30",
+            locatie: "Royal Horse",
+            mesaj: "Vă așteptăm să scriem împreună prima pagină din povestea noastră de familie, sub cerul liber și printre prieteni dragi."
+        };
+
+        // Aplica setările automat în pagină
+        document.getElementById('names').innerText = config.numeCuplu;
+        document.getElementById('weddingDate').innerText = config.data;
+        document.getElementById('weddingTime').innerText = config.ora;
+        document.getElementById('weddingLocation').innerText = config.locatie;
+        document.getElementById('description').innerText = config.mesaj;
+    </script>
+
+</body>
+</html>

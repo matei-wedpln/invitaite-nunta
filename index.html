@@ -43,20 +43,34 @@
             text-transform: uppercase;
         }
 
-        .sectiune { max-width: 600px; margin: 100px auto; padding: 0 30px; }
+        .sectiune { max-width: 600px; margin: 80px auto; padding: 0 30px; }
         
-        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--marina); margin-bottom: 40px; font-style: italic; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--marina); margin-bottom: 30px; font-style: italic; }
+
+        /* Stil Butoane Waze */
+        .btn-waze {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 25px;
+            background-color: #33ccff;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-waze:hover { background-color: var(--azur); }
 
         .formular-rsvp { background-color: white; padding: 80px 20px; border-top: 1px solid rgba(0,0,0,0.05); }
+        .container-form { max-width: 450px; margin: 0 auto; text-align: left; }
 
-        .container-form { max-width: 450px; margin: 0 auto; text-align: left; /* Aliniere text label-uri */ }
-
-        label { display: block; margin-bottom: 5px; font-size: 0.85rem; font-weight: 600; color: var(--marina); text-transform: uppercase; }
+        label { display: block; margin-bottom: 5px; font-size: 0.85rem; font-weight: 600; color: var(--marina); text-transform: uppercase; margin-top: 15px; }
 
         input, select, textarea {
             width: 100%;
             padding: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 0;
             font-family: inherit;
@@ -64,8 +78,7 @@
             background: #fdfdfd;
         }
 
-        /* Ascundem câmpurile condiționate la început */
-        .hidden-field { display: none; }
+        .hidden-field { display: none; padding-left: 15px; border-left: 2px solid var(--azur); margin-bottom: 20px; }
 
         .btn-trimite {
             background-color: var(--marina);
@@ -78,12 +91,27 @@
             cursor: pointer;
             transition: 0.3s;
             width: 100%;
-            margin-top: 10px;
+            margin-top: 30px;
         }
 
-        .btn-trimite:hover { background-color: var(--azur); }
+        /* Timer Styles */
+        #timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .time-box {
+            background: var(--marina);
+            color: white;
+            padding: 15px;
+            min-width: 70px;
+            border-radius: 5px;
+        }
+        .time-box span { display: block; font-size: 1.5rem; font-weight: bold; }
+        .time-box label { font-size: 0.7rem; color: var(--nisip); margin: 0; }
 
-        footer { padding: 50px; opacity: 0.6; font-size: 0.9rem; }
+        footer { padding: 80px 50px; background: var(--nisip); }
     </style>
 </head>
 <body>
@@ -91,8 +119,15 @@
     <header>
         <div class="simbol-ancora">⚓</div>
         <h1 id="numeMiri">ANDREI & MARIA</h1>
-        <p style="letter-spacing: 3px;" id="dataNunta">22 AUGUST 2026</p>
+        <p style="letter-spacing: 3px;" id="dataText">22 AUGUST 2026</p>
     </header>
+
+    <div class="sectiune">
+        <h2>Locații</h2>
+        <p>Vă așteptăm cu drag să ne fiți alături!</p>
+        <a id="linkWazeBiserica" href="#" class="btn-waze" target="_blank">📍 WAZE: BISERICĂ</a>
+        <a id="linkWazeRestaurant" href="#" class="btn-waze" target="_blank">📍 WAZE: RESTAURANT</a>
+    </div>
 
     <div class="formular-rsvp" id="rsvp">
         <div class="container-form">
@@ -100,18 +135,23 @@
             
             <form action="https://formspree.io/f/xbdqgdae" method="POST">
                 
-                <label>Nume complet</label>
-                <input type="text" name="Nume" placeholder="Introduceți numele" required>
+                <label>Numele tău complet</label>
+                <input type="text" name="Nume_Principal" placeholder="Introduceți numele" required>
 
                 <label>Vei fi alături de noi?</label>
-                <select name="Prezenta" id="prezenta" required onchange="togglePrezenta()">
+                <select name="Prezenta" id="prezenta" required onchange="toggleForm()">
                     <option value="" disabled selected>Alege o opțiune</option>
                     <option value="Singur">Vin singur(ă)</option>
                     <option value="Insotit">Vin însoțit(ă)</option>
                     <option value="Nu">Din păcate, nu pot veni</option>
                 </select>
 
-                <div id="sectiuneCopii" class="hidden-field">
+                <div id="divPartener" class="hidden-field">
+                    <label>Numele partenerului/însoțitorului</label>
+                    <input type="text" name="Nume_Partener" placeholder="Introduceți numele partenerului">
+                </div>
+
+                <div id="detaliiSuplimentare" class="hidden-field">
                     <label>Vii cu copii?</label>
                     <select name="Are_Copii" id="areCopii" onchange="toggleCopii()">
                         <option value="Nu">Nu</option>
@@ -119,12 +159,10 @@
                     </select>
 
                     <div id="numarCopiiDiv" class="hidden-field">
-                        <label>Câți copii te însoțesc?</label>
-                        <input type="number" name="Numar_Copii" min="1" placeholder="Ex: 2">
+                        <label>Câți copii vă însoțesc?</label>
+                        <input type="number" name="Numar_Copii" min="1" placeholder="Ex: 1">
                     </div>
-                </div>
 
-                <div id="sectiuneMeniu" class="hidden-field">
                     <label>Opțiune Meniu</label>
                     <select name="Meniu" id="meniu" onchange="toggleMeniu()">
                         <option value="Normal">Meniu Normal</option>
@@ -133,8 +171,8 @@
                     </select>
 
                     <div id="detaliiMeniuDiv" class="hidden-field">
-                        <label>Vă rugăm să ne comunicați opțiunea:</label>
-                        <textarea name="Detalii_Meniu" placeholder="Detalii despre restricții sau preferințe..."></textarea>
+                        <label>Detalii meniu special:</label>
+                        <textarea name="Detalii_Meniu" placeholder="Vă rugăm să ne comunicați opțiunea sau restricțiile..."></textarea>
                     </div>
                 </div>
 
@@ -144,44 +182,72 @@
     </div>
 
     <footer>
-        <p id="footerNume">ANDREI & MARIA — 2026</p>
+        <h2>Până la eveniment au mai rămas:</h2>
+        <div id="timer">
+            <div class="time-box"><span id="days">00</span><label>ZILE</label></div>
+            <div class="time-box"><span id="hours">00</span><label>ORE</label></div>
+            <div class="time-box"><span id="minutes">00</span><label>MIN</label></div>
+        </div>
+        <p style="margin-top: 50px;" id="footerNume">ANDREI & MARIA — 2026</p>
     </footer>
 
     <script>
-        function togglePrezenta() {
+        // --- DATE EDITABILE ---
+        const config = {
+            miri: "Andrei & Maria",
+            dataNunta: "22 August 2026 16:30:00", // Format: Luna Zi An Ora:Min:Sec
+            dataAfisata: "Sâmbătă, 22 August 2026",
+            // Coordonate Waze (le iei din app: Share -> Copy Link)
+            wazeBiserica: "https://www.waze.com/ul?ll=44.4377,26.1154&navigate=yes",
+            wazeRestaurant: "https://www.waze.com/ul?ll=44.4444,26.1111&navigate=yes"
+        };
+
+        // Aplicare date
+        document.getElementById('numeMiri').innerText = config.miri;
+        document.getElementById('dataText').innerText = config.dataAfisata;
+        document.getElementById('footerNume').innerText = config.miri + " — 2026";
+        document.getElementById('linkWazeBiserica').href = config.wazeBiserica;
+        document.getElementById('linkWazeRestaurant').href = config.wazeRestaurant;
+
+        // Logica Formular
+        function toggleForm() {
             const prezenta = document.getElementById('prezenta').value;
-            const sectiuneCopii = document.getElementById('sectiuneCopii');
-            const sectiuneMeniu = document.getElementById('sectiuneMeniu');
+            const divPartener = document.getElementById('divPartener');
+            const detalii = document.getElementById('detaliiSuplimentare');
             
-            if (prezenta === 'Singur' || prezenta === 'Insotit') {
-                sectiuneCopii.style.display = 'block';
-                sectiuneMeniu.style.display = 'block';
-            } else {
-                sectiuneCopii.style.display = 'none';
-                sectiuneMeniu.style.display = 'none';
-            }
+            divPartener.style.display = (prezenta === 'Insotit') ? 'block' : 'none';
+            detalii.style.display = (prezenta === 'Singur' || prezenta === 'Insotit') ? 'block' : 'none';
         }
 
         function toggleCopii() {
             const areCopii = document.getElementById('areCopii').value;
-            const numarCopiiDiv = document.getElementById('numarCopiiDiv');
-            numarCopiiDiv.style.display = (areCopii === 'Da') ? 'block' : 'none';
+            document.getElementById('numarCopiiDiv').style.display = (areCopii === 'Da') ? 'block' : 'none';
         }
 
         function toggleMeniu() {
             const meniu = document.getElementById('meniu').value;
-            const detaliiMeniuDiv = document.getElementById('detaliiMeniuDiv');
-            detaliiMeniuDiv.style.display = (meniu === 'Altul') ? 'block' : 'none';
+            document.getElementById('detaliiMeniuDiv').style.display = (meniu === 'Altul') ? 'block' : 'none';
         }
 
-        // Date Editabile
-        const date = {
-            miri: "Andrei & Maria",
-            data: "Sâmbătă, 22 August 2026"
+        // Countdown Timer
+        const countdown = () => {
+            const countDate = new Date(config.dataNunta).getTime();
+            const now = new Date().getTime();
+            const gap = countDate - now;
+
+            if (gap > 0) {
+                const second = 1000;
+                const minute = second * 60;
+                const hour = minute * 60;
+                const day = hour * 24;
+
+                document.getElementById('days').innerText = Math.floor(gap / day);
+                document.getElementById('hours').innerText = Math.floor((gap % day) / hour);
+                document.getElementById('minutes').innerText = Math.floor((gap % hour) / minute);
+            }
         };
-        document.getElementById('numeMiri').innerText = date.miri;
-        document.getElementById('dataNunta').innerText = date.data;
-        document.getElementById('footerNume').innerText = date.miri + " — 2026";
+        setInterval(countdown, 1000);
+        countdown();
     </script>
 </body>
 </html>

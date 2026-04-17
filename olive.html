@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitație Nuntă - Olive Garden</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --olive: #708238;
+            --cream: #FDFBF7;
+            --sage: #A3B18A;
+            --text: #333d29;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--text);
+            text-align: center;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(253, 251, 247, 0.7), rgba(253, 251, 247, 0.7)), 
+                        url('https://images.unsplash.com/photo-1510076857177-7470076d4098?q=80&w=2070') center/cover;
+        }
+
+        .decor-olive { font-size: 2.5rem; color: var(--olive); margin-bottom: 10px; }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 10vw, 5rem);
+            margin: 10px 0;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .data-text { letter-spacing: 4px; font-weight: 300; border-top: 1px solid var(--sage); border-bottom: 1px solid var(--sage); padding: 10px 30px; }
+
+        .sectiune { max-width: 800px; margin: 80px auto; padding: 0 20px; }
+        
+        h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 30px; }
+
+        .btn-waze {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            background-color: var(--olive);
+            color: white;
+            text-decoration: none;
+            border-radius: 2px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .form-container { background: white; padding: 60px 20px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); max-width: 500px; margin: 0 auto; text-align: left; }
+
+        label { display: block; margin-top: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--olive); }
+
+        input, select, textarea {
+            width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #e0e0e0; border-radius: 0; font-family: inherit; box-sizing: border-box;
+        }
+
+        .hidden-field { display: none; margin-top: 10px; border-left: 2px solid var(--sage); padding-left: 15px; }
+
+        .btn-submit {
+            background-color: var(--text);
+            color: white;
+            width: 100%;
+            padding: 18px;
+            border: none;
+            margin-top: 30px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #timer { display: flex; justify-content: center; gap: 15px; margin-top: 40px; }
+        .time-box { background: var(--sage); color: white; padding: 15px; min-width: 70px; }
+        .time-box span { font-size: 1.8rem; display: block; font-family: 'Cormorant Garamond', serif; }
+        .time-box label { font-size: 0.6rem; color: white; margin: 0; font-weight: 400; }
+
+        footer { padding: 60px; font-size: 0.8rem; opacity: 0.6; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="decor-olive">🌿</div>
+        <h1 id="numeMiri">ANDREI & MARIA</h1>
+        <p class="data-text" id="dataAfisata">22 AUGUST 2026</p>
+    </header>
+
+    <div class="sectiune">
+        <h2>Unde ne vedem?</h2>
+        <div style="margin-bottom: 40px;">
+            <p><strong>Cununia Religioasă:</strong> <span id="txtBiserica">Biserica Sf. Vineri</span></p>
+            <a id="linkBiserica" href="#" class="btn-waze" target="_blank">LOCAȚIE BISERICĂ</a>
+        </div>
+        <div>
+            <p><strong>Petrecerea:</strong> <span id="txtRestaurant">Conacul Verde</span></p>
+            <a id="linkRestaurant" href="#" class="btn-waze" target="_blank">LOCAȚIE RESTAURANT</a>
+        </div>
+    </div>
+
+    <div class="sectiune" style="background: white; padding: 100px 20px;">
+        <div class="form-container">
+            <h2 style="text-align: center; margin-top: 0;">Confirmare</h2>
+            <form action="https://formspree.io/f/xbdqgdae" method="POST">
+                
+                <label>Nume complet</label>
+                <input type="text" name="Nume" required>
+
+                <label>Vei fi alături de noi?</label>
+                <select name="Prezenta" id="prezenta" onchange="toggleForm()">
+                    <option value="Singur">Vin singur(ă)</option>
+                    <option value="Insotit">Vin însoțit(ă)</option>
+                    <option value="Nu">Din păcate, nu pot</option>
+                </select>
+
+                <div id="divPartener" class="hidden-field">
+                    <label>Nume însoțitor</label>
+                    <input type="text" name="Nume_Partener">
+                </div>
+
+                <div id="detaliiExtra" class="hidden-field" style="display: block;">
+                    <label>Vii cu copii?</label>
+                    <select name="Copii" id="areCopii" onchange="toggleCopii()">
+                        <option value="Nu">Nu</option>
+                        <option value="Da">Da</option>
+                    </select>
+
+                    <div id="numarCopiiDiv" class="hidden-field">
+                        <label>Câți copii?</label>
+                        <input type="number" name="Numar_Copii" min="1">
+                    </div>
+
+                    <label>Opțiune Meniu</label>
+                    <select name="Meniu" id="meniu" onchange="toggleMeniu()">
+                        <option value="Normal">Meniu Normal</option>
+                        <option value="Vegan">Meniu Vegan</option>
+                        <option value="Altul">Altceva (Alergii/Restricții)</option>
+                    </select>
+
+                    <div id="detaliiMeniuDiv" class="hidden-field">
+                        <label>Te rugăm să ne scrii detaliile:</label>
+                        <textarea name="Detalii_Meniu"></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Confirmă</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="sectiune">
+        <h2>Abia așteptăm!</h2>
+        <div id="timer">
+            <div class="time-box"><span id="days">00</span><label>ZILE</label></div>
+            <div class="time-box"><span id="hours">00</span><label>ORE</label></div>
+            <div class="time-box"><span id="minutes">00</span><label>MIN</label></div>
+        </div>
+    </div>
+
+    <footer>
+        <p id="footerNume">ANDREI & MARIA — 2026</p>
+    </footer>
+
+    <script>
+        const CONFIG = {
+            miri: "Andrei & Maria",
+            dataNunta: "August 22, 2026 16:30:00",
+            dataAfisata: "Sâmbătă, 22 August 2026",
+            biserica: "Biserica Sf. Vineri, București",
+            restaurant: "Conacul Verde, Cernica",
+            wazeBiserica: "https://www.waze.com/ul?q=Biserica+Sf+Vineri",
+            wazeRestaurant: "https://www.waze.com/ul?q=Conacul+Verde"
+        };
+
+        // Populate
+        document.getElementById('numeMiri').innerText = CONFIG.miri;
+        document.getElementById('dataAfisata').innerText = CONFIG.dataAfisata;
+        document.getElementById('txtBiserica').innerText = CONFIG.biserica;
+        document.getElementById('txtRestaurant').innerText = CONFIG.restaurant;
+        document.getElementById('linkBiserica').href = CONFIG.wazeBiserica;
+        document.getElementById('linkRestaurant').href = CONFIG.wazeRestaurant;
+        document.getElementById('footerNume').innerText = CONFIG.miri + " — 2026";
+
+        function toggleForm() {
+            const v = document.getElementById('prezenta').value;
+            document.getElementById('divPartener').style.display = (v === 'Insotit') ? 'block' : 'none';
+            document.getElementById('detaliiExtra').style.display = (v !== 'Nu') ? 'block' : 'none';
+        }
+        function toggleCopii() {
+            const v = document.getElementById('areCopii').value;
+            document.getElementById('numarCopiiDiv').style.display = (v === 'Da') ? 'block' : 'none';
+        }
+        function toggleMeniu() {
+            const v = document.getElementById('meniu').value;
+            document.getElementById('detaliiMeniuDiv').style.display = (v === 'Altul') ? 'block' : 'none';
+        }
+
+        const countdown = () => {
+            const countDate = new Date(CONFIG.dataNunta).getTime();
+            const now = new Date().getTime();
+            const gap = countDate - now;
+            if (gap > 0) {
+                const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
+                document.getElementById('days').innerText = Math.floor(gap / day);
+                document.getElementById('hours').innerText = Math.floor((gap % day) / hour);
+                document.getElementById('minutes').innerText = Math.floor((gap % hour) / minute);
+            }
+        };
+        setInterval(countdown, 1000);
+        countdown();
+    </script>
+</body>
+</html>

@@ -1,1 +1,85 @@
 
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElegantInvite | Modele Invitații Digitale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #D4AF37; --dark: #121212; --light: #f9f9f9; }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background: var(--light); color: var(--dark); scroll-behavior: smooth; }
+        nav { padding: 20px; display: flex; justify-content: space-between; align-items: center; background: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); }
+        header { padding: 80px 20px; text-align: center; background: white; }
+        h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px; }
+        .catalog { padding: 40px 20px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .card-model { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; }
+        .card-model:hover { transform: translateY(-10px); }
+        .preview-img { height: 200px; background: #eee; display: flex; align-items: center; justify-content: center; font-size: 3rem; background-size: cover; background-position: center; }
+        .card-info { padding: 25px; text-align: left; }
+        .tag { font-size: 0.7rem; background: var(--gold); color: white; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: bold; }
+        .btn-demo { display: inline-block; margin-top: 15px; color: var(--gold); text-decoration: none; font-weight: bold; border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+        .pricing { padding: 60px 20px; background: var(--dark); color: white; text-align: center; }
+        .price-box { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; max-width: 400px; margin: 30px auto; border: 1px solid var(--gold); }
+        .price { font-size: 3rem; font-weight: bold; margin: 20px 0; color: var(--gold); }
+        .btn-order { display: inline-block; background: var(--gold); color: white; padding: 15px 40px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 20px; transition: 0.3s; }
+        .btn-order:hover { background: #b8962d; transform: scale(1.05); }
+        footer { padding: 40px; text-align: center; font-size: 0.8rem; color: #999; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">ElegantInvite</div>
+        <div style="font-weight: 600; font-size: 0.8rem; color: var(--gold);">PREMIUM DIGITAL</div>
+    </nav>
+
+    <header>
+        <h1>Invitația ta, la un click distanță.</h1>
+        <p style="color: #666; max-width: 600px; margin: 0 auto;">Alege un model, trimite-ne datele și primește link-ul tău personalizat.</p>
+    </header>
+
+    <div class="catalog" id="modele">
+        <div class="card-model">
+            <div class="preview-img" style="background-image: url('https://images.unsplash.com/photo-1520933901948-6cc8229f284b?q=80&w=500');">⚓</div>
+            <div class="card-info">
+                <span class="tag">Cel mai popular</span>
+                <h3>Deep Ocean & Navy</h3>
+                <p>O tematică marină elegantă, ideală pentru nunți la mare sau cu stil nautic.</p>
+                <a href="marin.html" class="btn-demo">Vezi Demo Live →</a>
+            </div>
+        </div>
+
+        <div class="card-model">
+            <div class="preview-img" style="background-image: url('https://images.unsplash.com/photo-1510076857177-7470076d4098?q=80&w=500');">🌿</div>
+            <div class="card-info">
+                <span class="tag">Minimalist</span>
+                <h3>Olive Garden</h3>
+                <p>Curat și plin de prospețime. Perfect pentru nunți în aer liber.</p>
+                <span style="color: #ccc; font-size: 0.8rem;">În curând...</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="pricing">
+        <h2>Preț corect, servicii complete</h2>
+        <div class="price-box">
+            <p>INVITAȚIE PERSONALIZATĂ</p>
+            <div class="price">150 RON</div>
+            <ul style="list-style: none; padding: 0; text-align: left; line-height: 2; font-size: 0.9rem;">
+                <li>✓ RSVP automat (Email/Excel)</li>
+                <li>✓ Navigare Waze & Maps</li>
+                <li>✓ Countdown Timer live</li>
+                <li>✓ Găzduire nelimitată</li>
+            </ul>
+            <a href="https://wa.me/407XXXXXXXX" class="btn-order">COMANDĂ PE WHATSAPP</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ElegantInvite. Creat pentru momente speciale.</p>
+    </footer>
+
+</body>
+</html>

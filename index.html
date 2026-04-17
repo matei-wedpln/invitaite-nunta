@@ -4,329 +4,242 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitație Nuntă - Temă Marină</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* Culori Tematice: Marin & Nisip */
         :root {
-            --sand-light: #FFFAF5; /* Alb cald, nisipiu foate deschis */
-            --navy-dark: #001F3F;  /* Albastru marin închis, profund */
-            --azure-accent: #0074D9; /* Albastru azur deschis pentru accente */
-            --text-main: #1a1a1a;  /* Aproape negru pentru lizibilitate */
-            --text-muted: #666666; /* Gri pentru detalii */
+            --nisip: #FFFAF5;
+            --marina: #001F3F;
+            --azur: #0074D9;
+            --text: #1a1a1a;
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--sand-light);
-            color: var(--text-main);
-            text-align: center;
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
+            background-color: var(--nisip);
+            color: var(--text);
+            text-align: center; /* Centrare globală */
+            line-height: 1.6;
         }
 
-        /* Stil pentru titluri mari (Nume, Secțiuni) */
-        h1, h2 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 500;
-            margin: 0;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            color: var(--navy-dark);
-            letter-spacing: -1px;
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            color: var(--navy-dark);
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Subliniere discretă tip "val" sub titluri */
-        h2::after {
-            content: "";
+        /* Fundal discret cu textură marină */
+        .overlay {
             position: absolute;
-            left: 50%;
-            bottom: -10px;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background-color: var(--azure-accent);
-            border-radius: 2px;
-            opacity: 0.6;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(var(--marina) 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+            opacity: 0.03;
+            pointer-events: none;
         }
 
-        /* Secțiunea Principală (Hero) */
         header {
-            height: 90vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 0 20px;
-            border-bottom: 4px solid var(--navy-dark);
-            background-image: radial-gradient(rgba(0,31,63,0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
+            box-sizing: border-box;
         }
 
-        /* Simbol Marin Principal (Ancoră) */
-        .main-symbol {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            color: var(--azure-accent);
-            opacity: 0.8;
+        .simbol-ancora {
+            font-size: 3rem;
+            color: var(--azur);
+            margin-bottom: 20px;
+            animation: leganat 3s ease-in-out infinite;
         }
 
-        header p.intro-text {
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
+        @keyframes leganat {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
         }
 
-        header p.date {
-            font-size: 1.3rem;
-            font-weight: 300;
-            color: var(--navy-dark);
-            margin-top: 20px;
-            border-top: 1px solid rgba(0,31,63,0.1);
-            border-bottom: 1px solid rgba(0,31,63,0.1);
-            padding: 10px 0;
-        }
-
-        /* Butonul de RSVP Marin */
-        .btn-rsvp {
-            margin-top: 50px;
-            padding: 15px 35px;
-            background-color: var(--navy-dark);
-            color: white;
-            border: 2px solid var(--navy-dark);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            color: var(--marina);
+            margin: 10px 0;
             font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,31,63,0.1);
+            text-transform: uppercase;
         }
 
-        .btn-rsvp:hover {
-            background-color: transparent;
-            color: var(--navy-dark);
+        .data-principala {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--marina);
+            margin-top: 10px;
+            font-weight: 300;
         }
 
-        /* Secțiuni de Conținut (Program) */
-        .content-section {
-            max-width: 700px;
+        .sectiune {
+            max-width: 600px;
             margin: 100px auto;
-            padding: 0 20px;
+            padding: 0 30px;
         }
 
-        .program-item {
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--marina);
+            margin-bottom: 50px;
+            font-style: italic;
+        }
+
+        .eveniment {
             margin-bottom: 60px;
-            position: relative;
         }
 
-        /* Mic simbol nod marin între elemente */
-        .program-item::after {
-            content: "➰"; 
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1rem;
-            color: var(--azure-accent);
-            opacity: 0.4;
+        .eveniment h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin: 10px 0;
+            color: var(--azur);
         }
 
-        .program-item:last-child::after { content: ""; } /* Fără nod după ultimul */
+        .ora {
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
 
-        .program-item p.time {
+        .locatie {
             font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--azure-accent);
-            margin-bottom: 8px;
+            color: #555;
+            margin-top: 5px;
         }
 
-        .program-item h3 {
-            font-size: 1.6rem;
-            margin: 5px 0 15px 0;
-            font-weight: 500;
-        }
-
-        .program-item p.location {
-            font-size: 1.1rem;
-            color: var(--text-main);
-            max-width: 80%;
-            margin: 0 auto;
-        }
-
-        /* Secțiunea RSVP (Formularul) */
-        .rsvp-section {
+        .formular-rsvp {
             background-color: white;
-            padding: 100px 20px;
-            border-top: 1px solid #eee;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath d='M1 3h1v1H1V3zm2-2h1v1H3V1z' fill='%23001F3F' fill-opacity='0.02'/%3E%3C/svg%3E");
+            padding: 80px 20px;
+            border-top: 1px solid rgba(0,0,0,0.05);
         }
 
-        .form-group {
-            max-width: 500px;
+        .container-form {
+            max-width: 450px;
             margin: 0 auto;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--navy-dark);
+            text-align: center; /* Centrare formular */
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 18px;
-            margin-bottom: 25px;
+            padding: 15px;
+            margin-bottom: 20px;
             border: 1px solid #ddd;
-            background-color: #fbfbfb;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+            border-radius: 0;
+            font-family: inherit;
             box-sizing: border-box;
-            border-radius: 2px;
+            background: #fdfdfd;
         }
 
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--azure-accent);
-            outline: none;
-            background-color: white;
-        }
-
-        .btn-submit {
-            background-color: var(--azure-accent);
+        .btn-trimite {
+            background-color: var(--marina);
             color: white;
+            padding: 18px 40px;
             border: none;
-            padding: 18px;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,116,217,0.2);
+            transition: 0.3s;
+            width: 100%;
         }
 
-        .btn-submit:hover {
-            background-color: var(--navy-dark);
+        .btn-trimite:hover {
+            background-color: var(--azur);
         }
 
-        /* Footer Simplu */
         footer {
-            padding: 60px 20px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            background-color: var(--sand-light);
-            border-top: 1px solid rgba(0,31,63,0.05);
+            padding: 50px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            opacity: 0.6;
         }
 
-        /* Ajustări Mobile */
-        @media (max-width: 600px) {
-            h1 { font-size: 2.8rem; }
-            h2 { font-size: 1.9rem; }
-            header { height: 80vh; }
-            .content-section { margin: 80px auto; }
-            .program-item p.location { max-width: 100%; }
+        hr {
+            width: 40px;
+            border: 0;
+            border-top: 2px solid var(--azur);
+            margin: 30px auto;
         }
     </style>
 </head>
 <body>
+    <div class="overlay"></div>
 
     <header>
-        <div class="main-symbol">⚓</div>
-        <p class="intro-text">Ne unim destinele</p>
-        <h1 id="names">ANDREI & MARIA</h1>
-        <p class="date" id="mainDate">Sâmbătă, 22 August 2026</p>
-        <a href="#rsvp" class="btn-rsvp">Confirmă Călătoria</a>
+        <div class="simbol-ancora">⚓</div>
+        <p style="letter-spacing: 5px; font-weight: 300;">NE UNITI DESTINELE</p>
+        <h1 id="numeMiri">ANDREI & MARIA</h1>
+        <p class="data-principala" id="dataNunta">22 AUGUST 2026</p>
     </header>
 
-    <div class="content-section" id="program">
-        <h2 style="margin-bottom: 80px;">Programul Evenimentului</h2>
-
-        <div class="program-item">
-            <p class="time" id="cununieTime">Ora 16:30</p>
-            <h3>Cununie Religioasă</h3>
-            <p class="location" id="cununieLoc">Biserica Sfântul Silvestru, București</p>
+    <div class="sectiune">
+        <h2>Programul Zilei</h2>
+        
+        <div class="eveniment">
+            <p class="ora" id="oraCununie">Ora 16:30</p>
+            <h3>Cununia Religioasă</h3>
+            <p class="locatie" id="locCununie">Biserica Sfântul Silvestru, București</p>
         </div>
 
-        <div class="program-item">
-            <p class="time" id="petrecereTime">Ora 19:00</p>
-            <h3>Petrecere pe Tărm</h3>
-            <p class="location" id="petrecereLoc">Restaurantul Grădina Eden, Salonul Măslin</p>
+        <hr>
+
+        <div class="eveniment">
+            <p class="ora" id="oraPetrecere">Ora 19:00</p>
+            <h3>Petrecerea la Bord</h3>
+            <p class="locatie" id="locPetrecere">Restaurantul Grădina Eden, Salonul Măslin</p>
         </div>
     </div>
 
-    <div class="rsvp-section" id="rsvp">
-        <div class="form-group">
-            <h2 style="text-align: center; margin-bottom: 40px;">Aruncăm Ancora</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 50px; max-width: 80%; margin-left: auto; margin-right: auto;">Vă rugăm să confirmați prezența la bord până la data de 1 Iulie 2026.</p>
+    <div class="formular-rsvp" id="rsvp">
+        <div class="container-form">
+            <h2 style="margin-bottom: 20px;">Confirmare</h2>
+            <p style="margin-bottom: 40px;">Vă rugăm să ne confirmați prezența până la data de 1 iulie 2026.</p>
             
             <form action="https://formspree.io/f/xbdqgdae" method="POST">
+                <input type="text" name="Nume" placeholder="Numele tău" required>
                 
-                <label>Nume și Prenume Invitat:</label>
-                <input type="text" name="Nume_Complet" placeholder="Ex: Popescu Ion" required>
-                
-                <label>Vei fi alături de noi?</label>
                 <select name="Prezenta" required>
-                    <option value="" disabled selected>Alege o opțiune</option>
+                    <option value="" disabled selected>Vei fi alături de noi?</option>
                     <option value="Da">Confirm cu bucurie</option>
-                    <option value="Nu">Din păcate, nu pot ajunge</option>
+                    <option value="Nu">Din păcate, nu pot</option>
                 </select>
                 
-                <label>Număr locuri la masă:</label>
-                <input type="number" name="Persoane" placeholder="Inclusiv copii" min="1" value="1">
+                <input type="number" name="Persoane" placeholder="Număr persoane" min="1" value="1">
+                <textarea name="Mesaj" placeholder="Mesaj sau preferințe alimentare..." rows="3"></textarea>
                 
-                <label>Mesaj sau preferințe alimentare:</label>
-                <textarea name="Mesaj" placeholder="Ex: Meniu vegetarian, alergii, etc." rows="4"></textarea>
-                
-                <input type="hidden" name="_next" value="https://google.com">
-
-                <button type="submit" class="btn-submit">Trimite Confirmarea</button>
+                <button type="submit" class="btn-trimite">Trimite Confirmarea</button>
             </form>
         </div>
     </div>
 
     <footer>
-        <p>© 2026 | Andrei & Maria | Călătoria începe</p>
+        <p>ANDREI & MARIA — 2026</p>
+        <div style="margin-top: 10px; font-size: 1.2rem;">🕊️ ⚓ 🕊️</div>
     </footer>
 
     <script>
-        // MODIFICĂ DOAR TEXTUL DINTRE GHILIMELE DE MAI JOS:
-        const dateNunta = {
-            numeCuplu: "ANDREI & MARIA", // Numele mari din antet
-            dataPrincipala: "Sâmbătă, 22 August 2026", // Data de sub nume
-
-            // Cununie Religioasă
-            oraCununie: "Ora 16:30",
-            locatieCununie: "Biserica Sfântul Silvestru, București",
-
-            // Petrecere
-            oraPetrecere: "Ora 19:00",
-            locatiePetrecere: "Restaurantul Grădina Eden, Salonul Măslin"
+        // MODIFICĂ AICI DATELE TALE:
+        const setari = {
+            miri: "Andrei & Maria",
+            data: "Sâmbătă, 22 August 2026",
+            oraC: "Ora 16:30",
+            locC: "Biserica Sfântul Silvestru, București",
+            oraP: "Ora 19:00",
+            locP: "Restaurantul Grădina Eden, Salonul Măslin"
         };
 
-        // NU MODIFICA MAI JOS - Aici datele se aplică automat în pagină
-        document.getElementById('names').innerText = dateNunta.numeCuplu;
-        document.getElementById('mainDate').innerText = dateNunta.dataPrincipala;
-        document.getElementById('cununieTime').innerText = dateNunta.oraCununie;
-        document.getElementById('cununieLoc').innerText = dateNunta.locatieCununie;
-        document.getElementById('petrecereTime').innerText = dateNunta.oraPetrecere;
-        document.getElementById('petrecereLoc').innerText = dateNunta.locatiePetrecere;
+        // Se aplică automat:
+        document.getElementById('numeMiri').innerText = setari.miri;
+        document.getElementById('dataNunta').innerText = setari.data;
+        document.getElementById('oraCununie').innerText = setari.oraC;
+        document.getElementById('locCununie').innerText = setari.locC;
+        document.getElementById('oraPetrecere').innerText = setari.oraP;
+        document.getElementById('locPetrecere').innerText = setari.locP;
     </script>
-
 </body>
 </html>

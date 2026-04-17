@@ -19,18 +19,8 @@
             font-family: 'Montserrat', sans-serif;
             background-color: var(--nisip);
             color: var(--text);
-            text-align: center; /* Centrare globală */
+            text-align: center;
             line-height: 1.6;
-        }
-
-        /* Fundal discret cu textură marină */
-        .overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(var(--marina) 0.5px, transparent 0.5px);
-            background-size: 30px 30px;
-            opacity: 0.03;
-            pointer-events: none;
         }
 
         header {
@@ -40,20 +30,9 @@
             justify-content: center;
             align-items: center;
             padding: 0 20px;
-            box-sizing: border-box;
         }
 
-        .simbol-ancora {
-            font-size: 3rem;
-            color: var(--azur);
-            margin-bottom: 20px;
-            animation: leganat 3s ease-in-out infinite;
-        }
-
-        @keyframes leganat {
-            0%, 100% { transform: rotate(-5deg); }
-            50% { transform: rotate(5deg); }
-        }
+        .simbol-ancora { font-size: 3rem; color: var(--azur); margin-bottom: 20px; }
 
         h1 {
             font-family: 'Playfair Display', serif;
@@ -64,65 +43,15 @@
             text-transform: uppercase;
         }
 
-        .data-principala {
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--marina);
-            margin-top: 10px;
-            font-weight: 300;
-        }
+        .sectiune { max-width: 600px; margin: 100px auto; padding: 0 30px; }
+        
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--marina); margin-bottom: 40px; font-style: italic; }
 
-        .sectiune {
-            max-width: 600px;
-            margin: 100px auto;
-            padding: 0 30px;
-        }
+        .formular-rsvp { background-color: white; padding: 80px 20px; border-top: 1px solid rgba(0,0,0,0.05); }
 
-        h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--marina);
-            margin-bottom: 50px;
-            font-style: italic;
-        }
+        .container-form { max-width: 450px; margin: 0 auto; text-align: left; /* Aliniere text label-uri */ }
 
-        .eveniment {
-            margin-bottom: 60px;
-        }
-
-        .eveniment h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin: 10px 0;
-            color: var(--azur);
-        }
-
-        .ora {
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            color: var(--text);
-        }
-
-        .locatie {
-            font-size: 1.1rem;
-            color: #555;
-            margin-top: 5px;
-        }
-
-        .formular-rsvp {
-            background-color: white;
-            padding: 80px 20px;
-            border-top: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .container-form {
-            max-width: 450px;
-            margin: 0 auto;
-            text-align: center; /* Centrare formular */
-        }
+        label { display: block; margin-bottom: 5px; font-size: 0.85rem; font-weight: 600; color: var(--marina); text-transform: uppercase; }
 
         input, select, textarea {
             width: 100%;
@@ -135,6 +64,9 @@
             background: #fdfdfd;
         }
 
+        /* Ascundem câmpurile condiționate la început */
+        .hidden-field { display: none; }
+
         .btn-trimite {
             background-color: var(--marina);
             color: white;
@@ -146,100 +78,110 @@
             cursor: pointer;
             transition: 0.3s;
             width: 100%;
+            margin-top: 10px;
         }
 
-        .btn-trimite:hover {
-            background-color: var(--azur);
-        }
+        .btn-trimite:hover { background-color: var(--azur); }
 
-        footer {
-            padding: 50px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            opacity: 0.6;
-        }
-
-        hr {
-            width: 40px;
-            border: 0;
-            border-top: 2px solid var(--azur);
-            margin: 30px auto;
-        }
+        footer { padding: 50px; opacity: 0.6; font-size: 0.9rem; }
     </style>
 </head>
 <body>
-    <div class="overlay"></div>
 
     <header>
         <div class="simbol-ancora">⚓</div>
-        <p style="letter-spacing: 5px; font-weight: 300;">NE UNITI DESTINELE</p>
         <h1 id="numeMiri">ANDREI & MARIA</h1>
-        <p class="data-principala" id="dataNunta">22 AUGUST 2026</p>
+        <p style="letter-spacing: 3px;" id="dataNunta">22 AUGUST 2026</p>
     </header>
-
-    <div class="sectiune">
-        <h2>Programul Zilei</h2>
-        
-        <div class="eveniment">
-            <p class="ora" id="oraCununie">Ora 16:30</p>
-            <h3>Cununia Religioasă</h3>
-            <p class="locatie" id="locCununie">Biserica Sfântul Silvestru, București</p>
-        </div>
-
-        <hr>
-
-        <div class="eveniment">
-            <p class="ora" id="oraPetrecere">Ora 19:00</p>
-            <h3>Petrecerea la Bord</h3>
-            <p class="locatie" id="locPetrecere">Restaurantul Grădina Eden, Salonul Măslin</p>
-        </div>
-    </div>
 
     <div class="formular-rsvp" id="rsvp">
         <div class="container-form">
-            <h2 style="margin-bottom: 20px;">Confirmare</h2>
-            <p style="margin-bottom: 40px;">Vă rugăm să ne confirmați prezența până la data de 1 iulie 2026.</p>
+            <h2 style="text-align: center;">Confirmare</h2>
             
             <form action="https://formspree.io/f/xbdqgdae" method="POST">
-                <input type="text" name="Nume" placeholder="Numele tău" required>
                 
-                <select name="Prezenta" required>
-                    <option value="" disabled selected>Vei fi alături de noi?</option>
-                    <option value="Da">Confirm cu bucurie</option>
-                    <option value="Nu">Din păcate, nu pot</option>
+                <label>Nume complet</label>
+                <input type="text" name="Nume" placeholder="Introduceți numele" required>
+
+                <label>Vei fi alături de noi?</label>
+                <select name="Prezenta" id="prezenta" required onchange="togglePrezenta()">
+                    <option value="" disabled selected>Alege o opțiune</option>
+                    <option value="Singur">Vin singur(ă)</option>
+                    <option value="Insotit">Vin însoțit(ă)</option>
+                    <option value="Nu">Din păcate, nu pot veni</option>
                 </select>
-                
-                <input type="number" name="Persoane" placeholder="Număr persoane" min="1" value="1">
-                <textarea name="Mesaj" placeholder="Mesaj sau preferințe alimentare..." rows="3"></textarea>
-                
+
+                <div id="sectiuneCopii" class="hidden-field">
+                    <label>Vii cu copii?</label>
+                    <select name="Are_Copii" id="areCopii" onchange="toggleCopii()">
+                        <option value="Nu">Nu</option>
+                        <option value="Da">Da</option>
+                    </select>
+
+                    <div id="numarCopiiDiv" class="hidden-field">
+                        <label>Câți copii te însoțesc?</label>
+                        <input type="number" name="Numar_Copii" min="1" placeholder="Ex: 2">
+                    </div>
+                </div>
+
+                <div id="sectiuneMeniu" class="hidden-field">
+                    <label>Opțiune Meniu</label>
+                    <select name="Meniu" id="meniu" onchange="toggleMeniu()">
+                        <option value="Normal">Meniu Normal</option>
+                        <option value="Vegan">Meniu Vegan/Vegetarian</option>
+                        <option value="Altul">Altă opțiune (alergii/restricții)</option>
+                    </select>
+
+                    <div id="detaliiMeniuDiv" class="hidden-field">
+                        <label>Vă rugăm să ne comunicați opțiunea:</label>
+                        <textarea name="Detalii_Meniu" placeholder="Detalii despre restricții sau preferințe..."></textarea>
+                    </div>
+                </div>
+
                 <button type="submit" class="btn-trimite">Trimite Confirmarea</button>
             </form>
         </div>
     </div>
 
     <footer>
-        <p>ANDREI & MARIA — 2026</p>
-        <div style="margin-top: 10px; font-size: 1.2rem;">🕊️ ⚓ 🕊️</div>
+        <p id="footerNume">ANDREI & MARIA — 2026</p>
     </footer>
 
     <script>
-        // MODIFICĂ AICI DATELE TALE:
-        const setari = {
-            miri: "Andrei & Maria",
-            data: "Sâmbătă, 22 August 2026",
-            oraC: "Ora 16:30",
-            locC: "Biserica Sfântul Silvestru, București",
-            oraP: "Ora 19:00",
-            locP: "Restaurantul Grădina Eden, Salonul Măslin"
-        };
+        function togglePrezenta() {
+            const prezenta = document.getElementById('prezenta').value;
+            const sectiuneCopii = document.getElementById('sectiuneCopii');
+            const sectiuneMeniu = document.getElementById('sectiuneMeniu');
+            
+            if (prezenta === 'Singur' || prezenta === 'Insotit') {
+                sectiuneCopii.style.display = 'block';
+                sectiuneMeniu.style.display = 'block';
+            } else {
+                sectiuneCopii.style.display = 'none';
+                sectiuneMeniu.style.display = 'none';
+            }
+        }
 
-        // Se aplică automat:
-        document.getElementById('numeMiri').innerText = setari.miri;
-        document.getElementById('dataNunta').innerText = setari.data;
-        document.getElementById('oraCununie').innerText = setari.oraC;
-        document.getElementById('locCununie').innerText = setari.locC;
-        document.getElementById('oraPetrecere').innerText = setari.oraP;
-        document.getElementById('locPetrecere').innerText = setari.locP;
+        function toggleCopii() {
+            const areCopii = document.getElementById('areCopii').value;
+            const numarCopiiDiv = document.getElementById('numarCopiiDiv');
+            numarCopiiDiv.style.display = (areCopii === 'Da') ? 'block' : 'none';
+        }
+
+        function toggleMeniu() {
+            const meniu = document.getElementById('meniu').value;
+            const detaliiMeniuDiv = document.getElementById('detaliiMeniuDiv');
+            detaliiMeniuDiv.style.display = (meniu === 'Altul') ? 'block' : 'none';
+        }
+
+        // Date Editabile
+        const date = {
+            miri: "Andrei & Maria",
+            data: "Sâmbătă, 22 August 2026"
+        };
+        document.getElementById('numeMiri').innerText = date.miri;
+        document.getElementById('dataNunta').innerText = date.data;
+        document.getElementById('footerNume').innerText = date.miri + " — 2026";
     </script>
 </body>
 </html>

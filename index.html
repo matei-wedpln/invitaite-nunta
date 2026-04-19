@@ -1,85 +1,184 @@
-
 <!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElegantInvite | Modele Invitații Digitale</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>White Pearl Invitations | Premium Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #D4AF37; --dark: #121212; --light: #f9f9f9; }
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background: var(--light); color: var(--dark); scroll-behavior: smooth; }
-        nav { padding: 20px; display: flex; justify-content: space-between; align-items: center; background: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); }
-        header { padding: 80px 20px; text-align: center; background: white; }
-        h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px; }
-        .catalog { padding: 40px 20px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .card-model { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; }
-        .card-model:hover { transform: translateY(-10px); }
-        .preview-img { height: 200px; background: #eee; display: flex; align-items: center; justify-content: center; font-size: 3rem; background-size: cover; background-position: center; }
-        .card-info { padding: 25px; text-align: left; }
-        .tag { font-size: 0.7rem; background: var(--gold); color: white; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-weight: bold; }
-        .btn-demo { display: inline-block; margin-top: 15px; color: var(--gold); text-decoration: none; font-weight: bold; border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
-        .pricing { padding: 60px 20px; background: var(--dark); color: white; text-align: center; }
-        .price-box { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; max-width: 400px; margin: 30px auto; border: 1px solid var(--gold); }
-        .price { font-size: 3rem; font-weight: bold; margin: 20px 0; color: var(--gold); }
-        .btn-order { display: inline-block; background: var(--gold); color: white; padding: 15px 40px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 20px; transition: 0.3s; }
-        .btn-order:hover { background: #b8962d; transform: scale(1.05); }
-        footer { padding: 40px; text-align: center; font-size: 0.8rem; color: #999; }
+        :root {
+            --pearl: #F0EAD6;
+            --silk: #FFFDF9;
+            --gold-soft: #C5A059;
+            --text: #2c2c2c;
+        }
+
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background: var(--silk); color: var(--text); overflow-x: hidden; }
+        
+        /* Nav */
+        nav { padding: 25px; text-align: center; background: white; border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+        .logo { font-family: 'Cinzel', serif; font-size: 1.4rem; letter-spacing: 4px; color: var(--gold-soft); }
+
+        /* Hero cu tematică Rochie & Perle */
+        header {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(255, 253, 249, 0.6), rgba(255, 253, 249, 0.6)), 
+                        url('https://images.unsplash.com/photo-1594553282662-f485961d7c71?q=80&w=2070') center/cover; /* Imagine matase/rochie */
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        header h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(2.5rem, 8vw, 4rem); 
+            font-weight: 400; 
+            margin: 0; 
+            font-style: italic;
+        }
+
+        .hero-subtitle { 
+            text-transform: uppercase; 
+            letter-spacing: 6px; 
+            font-size: 0.8rem; 
+            margin-top: 20px; 
+            color: var(--gold-soft);
+            font-weight: 600;
+        }
+
+        /* Catalog */
+        .catalog { 
+            max-width: 1200px; 
+            margin: -100px auto 100px; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            padding: 0 20px;
+        }
+
+        .card { 
+            background: white; 
+            padding: 10px; 
+            border: 1px solid rgba(197, 160, 89, 0.1); 
+            transition: 0.4s;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+        }
+
+        .card:hover { transform: translateY(-10px); border-color: var(--gold-soft); }
+
+        .img-placeholder { 
+            height: 350px; 
+            background: #fdfdfd; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #999;
+            border: 1px solid #f0f0f0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-body { padding: 25px 15px; text-align: center; }
+        .card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 0 0 10px; }
+        .btn-demo { 
+            display: inline-block; 
+            margin-top: 15px; 
+            text-decoration: none; 
+            color: var(--gold-soft); 
+            font-weight: 600; 
+            font-size: 0.8rem; 
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--gold-soft);
+            padding-bottom: 5px;
+        }
+
+        /* Sectiune Comanda */
+        .order-section { background: #1a1a1a; color: white; padding: 100px 20px; text-align: center; }
+        .price { font-size: 3.5rem; font-family: 'Playfair Display', serif; color: var(--gold-soft); margin: 20px 0; }
+        .btn-wa { 
+            background: var(--gold-soft); 
+            color: white; 
+            padding: 20px 50px; 
+            text-decoration: none; 
+            display: inline-block; 
+            border-radius: 0; 
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-top: 30px;
+        }
+
+        footer { padding: 50px; text-align: center; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.5; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">ElegantInvite</div>
-        <div style="font-weight: 600; font-size: 0.8rem; color: var(--gold);">PREMIUM DIGITAL</div>
-    </nav>
+    <nav><div class="logo">White Pearl</div></nav>
 
     <header>
-        <h1>Invitația ta, la un click distanță.</h1>
-        <p style="color: #666; max-width: 600px; margin: 0 auto;">Alege un model, trimite-ne datele și primește link-ul tău personalizat.</p>
+        <p class="hero-subtitle">Invitatii Digitale de Lux</p>
+        <h1>Rafinament în fiecare pixel.</h1>
     </header>
 
-    <div class="catalog" id="modele">
-        <div class="card-model">
-            <div class="preview-img" style="background-image: url('https://images.unsplash.com/photo-1520933901948-6cc8229f284b?q=80&w=500');">⚓</div>
-            <div class="card-info">
-                <span class="tag">Cel mai popular</span>
-                <h3>Deep Ocean & Navy</h3>
-                <p>O tematică marină elegantă, ideală pentru nunți la mare sau cu stil nautic.</p>
-                <a href="marin.html" class="btn-demo">Vezi Demo Live →</a>
+    <div class="catalog">
+        <div class="card">
+            <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1520933901948-6cc8229f284b?q=80&w=500');">⚓</div>
+            <div class="card-body">
+                <h3>Deep Ocean</h3>
+                <p>Tematică marină regală.</p>
+                <a href="marin.html" class="btn-demo">VEZI DEMO</a>
             </div>
         </div>
 
-        <div class="card-model">
-            <div class="preview-img" style="background-image: url('https://images.unsplash.com/photo-1510076857177-7470076d4098?q=80&w=500');">🌿</div>
-            <div class="card-info">
-                <span class="tag">Minimalist</span>
-                <h3>Olive Garden</h3>
-                <p>Curat și plin de prospețime. Perfect pentru nunți în aer liber.</p>
-                <span style="color: #ccc; font-size: 0.8rem;">În curând...</span>
+        <div class="card">
+            <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1546193430-c2d20e1cb9a5?q=80&w=500');">⚪</div>
+            <div class="card-body">
+                <h3>White Pearls</h3>
+                <p>Eleganță pură și detalii sidefate.</p>
+                <a href="white-pearls.html" class="btn-demo">VEZI DEMO</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1522673607200-164848242c2c?q=80&w=500');">🦢</div>
+            <div class="card-body">
+                <h3>White Swan</h3>
+                <p>Gratețea lebedei albe.</p>
+                <a href="white-swan.html" class="btn-demo">VEZI DEMO</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1517524204415-ee8b57058402?q=80&w=500');">🕯️</div>
+            <div class="card-body">
+                <h3>Candle Light</h3>
+                <p>Atmosferă caldă, intimă.</p>
+                <a href="candle-light.html" class="btn-demo">VEZI DEMO</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="img-placeholder" style="background-image: url('https://images.unsplash.com/photo-1548610762-646733296cd5?q=80&w=500');">🌹</div>
+            <div class="card-body">
+                <h3>Royal Roses</h3>
+                <p>Clasicul trandafir în nuanțe nobile.</p>
+                <a href="royal-roses.html" class="btn-demo">VEZI DEMO</a>
             </div>
         </div>
     </div>
 
-    <div class="pricing">
-        <h2>Preț corect, servicii complete</h2>
-        <div class="price-box">
-            <p>INVITAȚIE PERSONALIZATĂ</p>
-            <div class="price">150 RON</div>
-            <ul style="list-style: none; padding: 0; text-align: left; line-height: 2; font-size: 0.9rem;">
-                <li>✓ RSVP automat (Email/Excel)</li>
-                <li>✓ Navigare Waze & Maps</li>
-                <li>✓ Countdown Timer live</li>
-                <li>✓ Găzduire nelimitată</li>
-            </ul>
-            <a href="https://wa.me/407XXXXXXXX" class="btn-order">COMANDĂ PE WHATSAPP</a>
-        </div>
+    <div class="order-section">
+        <h2>Alege modelul, noi personalizăm.</h2>
+        <div class="price">150 RON</div>
+        <p>Livrare în maxim 24 de ore pe WhatsApp.</p>
+        <a href="https://wa.me/407XXXXXXXX" class="btn-wa">COMANDĂ PE WHATSAPP</a>
     </div>
 
-    <footer>
-        <p>&copy; 2026 ElegantInvite. Creat pentru momente speciale.</p>
-    </footer>
+    <footer>&copy; 2026 WHITE PEARL DIGITAL INVITES</footer>
 
 </body>
 </html>

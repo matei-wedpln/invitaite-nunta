@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitație de Nuntă - White Pearls</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pearl: #FDFBF7;
+            --gold: #D4AF37;
+            --text: #4A4A4A;
+            --soft-glow: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--pearl);
+            color: var(--text);
+            text-align: center;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(253, 251, 247, 0.5), rgba(253, 251, 247, 0.5)), 
+                        url('https://images.unsplash.com/photo-1594553282662-f485961d7c71?q=80&w=2070') center/cover;
+        }
+
+        .pearl-divider { font-size: 1.5rem; color: var(--gold); margin-bottom: 20px; letter-spacing: 5px; }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 400;
+            font-style: italic;
+            margin: 10px 0;
+            color: #1a1a1a;
+        }
+
+        .data-box {
+            border-top: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+            padding: 10px 40px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        .sectiune { max-width: 800px; margin: 100px auto; padding: 0 20px; }
+        
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-style: italic; margin-bottom: 40px; }
+
+        .btn-link {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 35px;
+            background-color: white;
+            color: var(--gold);
+            text-decoration: none;
+            border: 1px solid var(--gold);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-link:hover { background-color: var(--gold); color: white; }
+
+        .rsvp-card {
+            background: white;
+            padding: 50px 30px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.02);
+            border: 1px solid #f0f0f0;
+            max-width: 450px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        label { display: block; margin-top: 20px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: var(--gold); letter-spacing: 1px; }
+
+        input, select, textarea {
+            width: 100%; padding: 15px; margin-top: 8px; border: 1px solid #eee; border-radius: 0; font-family: inherit; box-sizing: border-box; background: #fafafa;
+        }
+
+        .hidden-field { display: none; transition: 0.5s; }
+
+        .btn-submit {
+            background-color: #1a1a1a;
+            color: white;
+            width: 100%;
+            padding: 20px;
+            border: none;
+            margin-top: 40px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+        }
+
+        #timer { display: flex; justify-content: center; gap: 20px; margin-top: 40px; }
+        .time-box { padding: 10px; border-bottom: 2px solid var(--gold); min-width: 60px; }
+        .time-box span { font-size: 2rem; display: block; font-family: 'Playfair Display', serif; }
+        .time-box label { color: #999; font-size: 0.6rem; }
+
+        footer { padding: 80px 20px; font-size: 0.7rem; letter-spacing: 3px; opacity: 0.5; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="pearl-divider">◦ ◦ ◦ ◦ ◦</div>
+        <p style="letter-spacing: 5px; font-size: 0.7rem;">INVITAȚIE LA NUNTĂ</p>
+        <h1 id="miri">ANDREI & MARIA</h1>
+        <div class="data-box" id="dataTxt">22 AUGUST 2026</div>
+    </header>
+
+    <div class="sectiune">
+        <h2>Unde și Când</h2>
+        <p>Vă așteptăm cu drag să celebrăm dragostea în aceste locații deosebite:</p>
+        <div style="margin-top: 40px;">
+            <p><strong>Cununia Religioasă</strong><br><span id="locBiserica">Biserica Sfântul Silvestru</span></p>
+            <a id="wBiserica" href="#" class="btn-link" target="_blank">LOCAȚIE WAZE</a>
+        </div>
+        <div style="margin-top: 40px;">
+            <p><strong>Petrecerea de Nuntă</strong><br><span id="locRest">Palatul Snagov, Salonul de Bal</span></p>
+            <a id="wRest" href="#" class="btn-link" target="_blank">LOCAȚIE WAZE</a>
+        </div>
+    </div>
+
+    <div class="sectiune">
+        <div class="rsvp-card">
+            <h2 style="text-align: center; font-size: 1.8rem; margin-top: 0;">Confirmare</h2>
+            <form action="https://formspree.io/f/xbdqgdae" method="POST">
+                <label>Numele tău</label>
+                <input type="text" name="Nume" required placeholder="Ex: Popescu Ion">
+
+                <label>Prezență</label>
+                <select name="Status" id="prezenta" onchange="toggleForm()">
+                    <option value="Singur">Vin singur(ă)</option>
+                    <option value="Insotit">Vin însoțit(ă)</option>
+                    <option value="Nu">Nu pot ajunge</option>
+                </select>
+
+                <div id="divPartener" class="hidden-field">
+                    <label>Nume însoțitor</label>
+                    <input type="text" name="Partener">
+                </div>
+
+                <div id="detalii">
+                    <label>Meniu preferat</label>
+                    <select name="Meniu">
+                        <option value="Standard">Standard</option>
+                        <option value="Vegan">Vegan</option>
+                        <option value="Copii">Meniu Copii</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Trimite Răspuns</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="sectiune">
+        <p style="letter-spacing: 3px; font-size: 0.7rem;">NUMĂRĂM ZILELE PÂNĂ LA EVENIMENT</p>
+        <div id="timer">
+            <div class="time-box"><span id="days">00</span><label>ZILE</label></div>
+            <div class="time-box"><span id="hours">00</span><label>ORE</label></div>
+            <div class="time-box"><span id="mins">00</span><label>MIN</label></div>
+        </div>
+    </div>
+
+    <footer>
+        <p id="foot">ANDREI & MARIA — 2026</p>
+    </footer>
+
+    <script>
+        const CONFIG = {
+            nume: "Andrei & Maria",
+            data: "August 22, 2026 16:30:00",
+            dataAfis: "22 AUGUST 2026",
+            bis: "Biserica Sfântul Silvestru, București",
+            rest: "Palatul Snagov, Salonul de Bal",
+            wBis: "https://www.waze.com/ul?ll=44.4377,26.1154&navigate=yes",
+            wRest: "https://www.waze.com/ul?ll=44.7088,26.1755&navigate=yes"
+        };
+
+        document.getElementById('miri').innerText = CONFIG.nume;
+        document.getElementById('dataTxt').innerText = CONFIG.dataAfis;
+        document.getElementById('locBiserica').innerText = CONFIG.bis;
+        document.getElementById('locRest').innerText = CONFIG.rest;
+        document.getElementById('wBiserica').href = CONFIG.wBis;
+        document.getElementById('wRest').href = CONFIG.wRest;
+        document.getElementById('foot').innerText = CONFIG.nume.toUpperCase() + " — 2026";
+
+        function toggleForm() {
+            const v = document.getElementById('prezenta').value;
+            document.getElementById('divPartener').style.display = (v === 'Insotit') ? 'block' : 'none';
+            document.getElementById('detalii').style.display = (v === 'Nu') ? 'none' : 'block';
+        }
+
+        const timer = () => {
+            const gap = new Date(CONFIG.data).getTime() - new Date().getTime();
+            if (gap > 0) {
+                document.getElementById('days').innerText = Math.floor(gap / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').innerText = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('mins').innerText = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+            }
+        };
+        setInterval(timer, 1000); timer();
+    </script>
+</body>
+</html>

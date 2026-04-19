@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitație de Nuntă Premium - White Swan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --swan-white: #FFFFFF;
+            --moon-grey: #F4F7F6;
+            --silver-accent: #C0C0C0;
+            --text-dark: #1A1A1A;
+            --text-soft: #555555;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--swan-white);
+            color: var(--text-dark);
+            text-align: center;
+            font-weight: 300;
+        }
+
+        /* Hero Section - Tematică Swan */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+                        url('https://images.unsplash.com/photo-1522673607200-164848242c2c?q=80&w=2070') center/cover; /* Imagine pene delicate/lebada */
+            padding: 0 20px;
+        }
+
+        .swan-icon { font-size: 2.5rem; color: var(--silver-accent); margin-bottom: 15px; opacity: 0.7; }
+
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 10vw, 5rem);
+            font-weight: 300;
+            margin: 10px 0;
+            letter-spacing: -1px;
+        }
+
+        .hero-date {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 7px;
+            color: var(--text-soft);
+            margin-top: 20px;
+            font-weight: 200;
+        }
+
+        /* Secțiuni */
+        .sectiune { max-width: 850px; margin: 120px auto; padding: 0 25px; }
+        
+        h2 { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 2.8rem; 
+            font-weight: 300; 
+            margin-bottom: 50px; 
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background-color: var(--silver-accent);
+        }
+
+        /* Detalii Locație */
+        .locatie-block { margin-bottom: 60px; }
+        .locatie-block h3 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-soft); font-weight: 400; margin-bottom: 10px;}
+        .locatie-block p { font-size: 1.3rem; font-family: 'Cormorant Garamond', serif; margin: 0; }
+
+        .btn-maps {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 35px;
+            background-color: transparent;
+            color: var(--text-dark);
+            text-decoration: none;
+            border: 1px solid var(--silver-accent);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            transition: 0.4s;
+            text-transform: uppercase;
+        }
+
+        .btn-maps:hover { background-color: var(--text-dark); color: white; border-color: var(--text-dark); }
+
+        /* RSVP - Design Curat */
+        .rsvp-section { background-color: var(--moon-grey); padding: 100px 20px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+        .rsvp-container { max-width: 480px; margin: 0 auto; text-align: left; background: white; padding: 60px 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.02); }
+
+        label { display: block; margin-top: 25px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-soft); font-weight: 400; }
+
+        input, select, textarea {
+            width: 100%; padding: 15px; margin-top: 10px; border: 1px solid #e0e0e0; border-radius: 0; font-family: inherit; box-sizing: border-box; background: var(--swan-white); font-weight: 300; font-size: 1rem;
+        }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--text-dark); }
+
+        .hidden-field { display: none; transition: 0.5s ease; padding-left: 20px; border-left: 1px solid var(--silver-accent); margin-top: 15px; }
+
+        .btn-confirm {
+            background-color: var(--text-dark);
+            color: white;
+            width: 100%;
+            padding: 22px;
+            border: none;
+            margin-top: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .btn-confirm:hover { background-color: #333; letter-spacing: 5px; }
+
+        /* Timer Minimalist */
+        .timer-wrap { margin-top: 60px; display: flex; justify-content: center; gap: 30px; }
+        .timer-box { text-align: center; }
+        .timer-box span { font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 300; display: block; color: var(--text-dark); }
+        .timer-box label { font-size: 0.6rem; color: var(--text-soft); letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+
+        footer { padding: 100px 20px; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--text-soft); border-top: 1px solid #f0f0f0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="swan-icon"> Swan </div>
+        <p style="letter-spacing: 6px; font-size: 0.7rem; color: var(--text-soft); text-transform: uppercase;">NE UNITI DESTINELE</p>
+        <h1 id="numeMiri">ANDREI & MARIA</h1>
+        <div class="hero-date" id="dataEro">22 AUGUST 2026</div>
+    </header>
+
+    <div class="sectiune">
+        <h2>Evenimentul</h2>
+        <p style="color: var(--text-soft); max-width: 600px; margin: 0 auto 60px;">Vă invităm să fiți martori la promisiunea noastră de iubire veșnică.</p>
+        
+        <div class="locatie-block">
+            <h3>Cununia Religioasă</h3>
+            <p id="txtBis">Biserica Sfântul Silvestru</p>
+            <p style="font-size: 1rem; color: var(--text-soft); margin-top: 5px;">Ora 16:30</p>
+            <a id="lnkBis" href="#" class="btn-maps" target="_blank">VEZI PE MAPS</a>
+        </div>
+        
+        <div class="locatie-block" style="margin-bottom: 0;">
+            <h3>Petrecerea</h3>
+            <p id="txtRest">Palatul Snagov, Salonul de Bal</p>
+            <p style="font-size: 1rem; color: var(--text-soft); margin-top: 5px;">Ora 19:00</p>
+            <a id="lnkRest" href="#" class="btn-maps" target="_blank">VEZI PE MAPS</a>
+        </div>
+    </div>
+
+    <div class="rsvp-section">
+        <div class="rsvp-container">
+            <h2 style="text-align: center; font-size: 2.2rem; margin-top: 0; display: block;">R.S.V.P.</h2>
+            <p style="text-align: center; color: var(--text-soft); font-size: 0.9rem; margin-bottom: 40px;">Vă rugăm să confirmați prezența până la data de 01.07.2026</p>
+            
+            <form action="https://formspree.io/f/xbdqgdae" method="POST">
+                <label>Nume complet</label>
+                <input type="text" name="Nume" required placeholder="Ex: Popescu Ion">
+
+                <label>Vei fi alături de noi?</label>
+                <select name="Prezenta" id="prezenta" onchange="toggleForm()">
+                    <option value="" disabled selected>Alege o opțiune</option>
+                    <option value="Singur">Vin singur(ă)</option>
+                    <option value="Insotit">Vin însoțit(ă)</option>
+                    <option value="Nu">Din păcate, nu pot</option>
+                </select>
+
+                <div id="divPartener" class="hidden-field">
+                    <label>Nume însoțitor</label>
+                    <input type="text" name="Partener" placeholder="Numele partenerului">
+                </div>
+
+                <div id="detaliiSuplimentare" class="hidden-field">
+                    <label>Vii cu copii?</label>
+                    <select name="Copii" id="areCopii" onchange="toggleCopii()">
+                        <option value="Nu">Nu</option>
+                        <option value="Da">Da</option>
+                    </select>
+
+                    <div id="numarCopiiDiv" class="hidden-field">
+                        <label>Câți copii?</label>
+                        <input type="number" name="Numar_Copii" min="1" placeholder="0">
+                    </div>
+
+                    <label>Opțiune Meniu</label>
+                    <select name="Meniu" id="meniu" onchange="toggleMeniu()">
+                        <option value="Normal">Meniu Normal</option>
+                        <option value="Vegan">Meniu Vegan</option>
+                        <option value="Altul">Alergii / Restricții</option>
+                    </select>
+
+                    <div id="detaliiMeniuDiv" class="hidden-field">
+                        <label>Detalii meniu special:</label>
+                        <textarea name="Detalii_Meniu" placeholder="Vă rugăm să specificați..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-confirm">Trimite Confirmarea</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="sectiune">
+        <h2>Numărăm secundele...</h2>
+        <div class="timer-wrap" id="timer">
+            <div class="timer-box"><span id="days">00</span><label>ZILE</label></div>
+            <div class="timer-box"><span id="hours">00</span><label>ORE</label></div>
+            <div class="timer-box"><span id="minutes">00</span><label>MIN</label></div>
+        </div>
+    </div>
+
+    <footer>
+        <p id="footNume">ANDREI & MARIA — 2026</p>
+    </footer>
+
+    <script>
+        const CONFIG = {
+            miri: "Andrei & Maria",
+            dataEveniment: "August 22, 2026 16:30:00",
+            dataAfis: "Sâmbătă, 22 August 2026",
+            bis: "Biserica Sfântul Silvestru, București",
+            rest: "Palatul Snagov, Salonul de Bal",
+            linkBis: "https://www.waze.com/ul?ll=44.4377,26.1154&navigate=yes",
+            linkRest: "https://www.waze.com/ul?ll=44.7088,26.1755&navigate=yes"
+        };
+
+        // Populate
+        document.getElementById('numeMiri').innerText = CONFIG.miri;
+        document.getElementById('dataEro').innerText = CONFIG.dataAfis;
+        document.getElementById('txtBis').innerText = CONFIG.bis;
+        document.getElementById('txtRest').innerText = CONFIG.rest;
+        document.getElementById('lnkBis').href = CONFIG.linkBis;
+        document.getElementById('lnkRest').href = CONFIG.linkRest;
+        document.getElementById('footNume').innerText = CONFIG.miri.toUpperCase() + " — 2026";
+
+        function toggleForm() {
+            const v = document.getElementById('prezenta').value;
+            document.getElementById('divPartener').style.display = (v === 'Insotit') ? 'block' : 'none';
+            document.getElementById('detaliiSuplimentare').style.display = (v === 'Singur' || v === 'Insotit') ? 'block' : 'none';
+        }
+        function toggleCopii() {
+            const v = document.getElementById('areCopii').value;
+            document.getElementById('numarCopiiDiv').style.display = (v === 'Da') ? 'block' : 'none';
+        }
+        function toggleMeniu() {
+            const v = document.getElementById('meniu').value;
+            document.getElementById('detaliiMeniuDiv').style.display = (v === 'Altul') ? 'block' : 'none';
+        }
+
+        const countdown = () => {
+            const gap = new Date(CONFIG.dataEveniment).getTime() - new Date().getTime();
+            if (gap > 0) {
+                const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
+                document.getElementById('days').innerText = Math.floor(gap / day);
+                document.getElementById('hours').innerText = Math.floor((gap % day) / hour);
+                document.getElementById('minutes').innerText = Math.floor((gap % hour) / minute);
+            }
+        };
+        setInterval(countdown, 1000); countdown();
+    </script>
+</body>
+</html>
